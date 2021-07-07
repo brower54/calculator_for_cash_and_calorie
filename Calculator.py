@@ -27,8 +27,20 @@ class Calculator:
             if self.week_ago <= record.date <= self.today:
                 week_stats.append(record.amount)
         return sum(week_stats)
-    
+
     # Функция получения остатка на счёте
-    def get_today_limit_balance:
+    def get_today_limit_balance(self):
         limit_balance = self.limit - self.get_today_stats()
         return limit_balance
+
+
+class CaloriesCalculator(Calculator):
+
+    def get_today_cash_remained(self):
+        calories_remained = self.get_today_limit_balance
+        if calories_remained > 0:
+            message = (f'Сегодня можно съесть ещё что-то,'
+                        f'но не более {calories_remained} кКал')
+        else:
+            message = 'Хватит есть!'
+        return message
