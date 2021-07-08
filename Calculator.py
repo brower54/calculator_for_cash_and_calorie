@@ -82,3 +82,11 @@ class Record:
             self.date = dt.date.today()
         else:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
+
+# Добавим сценарий действий
+if __name__ == 'main':
+    cash_calculator = CashCalculator(30000)
+    cash_calculator.add_record(Record(amount=10000, comment="ЖКХ")) 
+    cash_calculator.add_record(Record(amount=500, comment="Обед")) 
+    cash_calculator.add_record(Record(amount=1500, comment="Барбершоп")) 
+    print(cash_calculator.get_today_cash_remained("rub"))
